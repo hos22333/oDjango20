@@ -60,6 +60,7 @@
     <Folder Include="oDjango20\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dockerfile" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

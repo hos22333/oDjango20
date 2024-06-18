@@ -13,6 +13,16 @@ class NumberOperations:
         return self.num1 * self.num2 * self.num3
 
 
+
+
+
+
+
+
+
+
+
+
 # Create an instance of the NumberOperations class
 operations = NumberOperations(2, 3, 4)
 

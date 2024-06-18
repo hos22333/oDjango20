@@ -1,7 +1,12 @@
 """
 Definition of views.
 """
+from ast import Return
 from . import oClasses
+import json
+from django.http import JsonResponse, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
+
 
 from datetime import datetime
 from django.shortcuts import render
@@ -45,4 +50,35 @@ def about(request):
         }
     )
 
+@csrf_exempt
+def oClassTest(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body.decode('utf-8'))  # Decode bytes to str
+        except json.JSONDecodeError:
+            # Handle invalid JSON here (e.g., return an error response)
+            return HttpResponseBadRequest('Invalid JSON')
+
+
+    # Create an instance of the NumberOperations class
+    oVarIn1 = data.get("ooVarIn1")
+    oVarIn2 = data.get("ooVarIn2")
+    oVarIn3 = data.get("ooVarIn3")
+
+    print(oVarIn1)
+    print(oVarIn2)
+    print(oVarIn3)
+
+    operations = oClasses.NumberOperations(oVarIn1, oVarIn2, oVarIn3)
+
+    # Sum the numbers
+    oVarRes1 = operations.sum_numbers()
+
+    # Multiply the numbers
+    oVarRes2 = operations.multiply_numbers()
+
+   
+    return JsonResponse({'ooVarRes1': oVarRes1,
+                        'ooVarRes2': oVarRes2,})
+    
 
