@@ -1,7 +1,7 @@
 """
 Definition of views.
 """
-from ast import Return
+
 from . import oClasses
 import json
 from django.http import JsonResponse, HttpResponseBadRequest
@@ -49,6 +49,8 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+
 
 @csrf_exempt
 def oClassTest(request):
